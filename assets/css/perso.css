@@ -1,8 +1,69 @@
 /* Personnalisations d'Annabelle (s'ajoutent au template Editorial) */
 
+/* ===== Couleurs du site =====
+   Pour changer une couleur, il suffit de modifier sa valeur ici.
+   Mode jour : :root    Mode nuit : [data-theme="dark"] */
+:root {
+	--accent: #1f4e8c;          /* bleu marine */
+	--accent-rgb: 31, 78, 140;  /* le même bleu, en chiffres */
+	--accent-survol: #2a5fa6;
+	--accent-actif: #183f72;
+	--fond: #ffffff;
+	--fond-alt: #f5f6f7;        /* menu de gauche */
+	--fond-alt2: #eff1f2;
+	--fond-carte: #ffffff;
+	--fond-doux: rgba(230, 235, 237, 0.25);
+	--titre: #3d4449;
+	--texte: #7f888f;
+	--texte-pale: #9fa3a6;
+	--bordure: rgba(210, 215, 217, 0.75);
+	--bordure-forte: rgba(222, 225, 226, 0.75);
+	color-scheme: light;
+}
+[data-theme="dark"] {
+	--accent: #4a90c2;          /* bleu clair */
+	--accent-rgb: 74, 144, 194;
+	--accent-survol: #62a2d0;
+	--accent-actif: #3a7eb0;
+	--fond: #171b20;
+	--fond-alt: #1f242b;
+	--fond-alt2: #272d35;
+	--fond-carte: #222830;
+	--fond-doux: rgba(255, 255, 255, 0.04);
+	--titre: #e8ebee;
+	--texte: #b3bcc4;
+	--texte-pale: #8a949d;
+	--bordure: rgba(255, 255, 255, 0.12);
+	--bordure-forte: rgba(255, 255, 255, 0.2);
+	color-scheme: dark;
+}
+body, #sidebar, .carte, .carte-texte, .reco-vedette {
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+[data-theme="dark"] .carte { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); }
+[data-theme="dark"] .carte img, [data-theme="dark"] .image.main img { filter: brightness(0.85); }
+
+/* Bouton soleil / lune */
+#header .icons .bouton-theme {
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 0 0.25em;
+	height: auto;
+	line-height: inherit;
+	font-size: 1.1em;
+	color: var(--texte);
+	cursor: pointer;
+	transition: color 0.2s ease, transform 0.4s ease;
+}
+#header .icons .bouton-theme:hover { color: var(--accent); transform: rotate(20deg); }
+#header .icons .bouton-theme .fa-sun { display: none; }
+[data-theme="dark"] #header .icons .bouton-theme .fa-sun { display: inline-block; }
+[data-theme="dark"] #header .icons .bouton-theme .fa-moon { display: none; }
+
 /* Page actuelle mise en évidence dans le menu */
 #menu ul a.active {
-	color: #f56a6a;
+	color: var(--accent);
 	font-weight: 600;
 }
 
@@ -15,8 +76,8 @@
 	aspect-ratio: 1 / 1;
 	border-radius: 50%;
 	overflow: hidden;
-	border: 6px solid #fff;
-	box-shadow: 0 0 0 3px #f56a6a, 0 10px 30px rgba(0, 0, 0, 0.12);
+	border: 6px solid var(--fond);
+	box-shadow: 0 0 0 3px var(--accent), 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 #banner .image.photo-ronde img {
 	width: 100%;
@@ -37,18 +98,18 @@
 
 /* Bouton de langue FR / EN dans l'en-tête */
 #header .icons a.langue {
-	border: solid 2px #f56a6a;
+	border: solid 2px var(--accent);
 	border-radius: 0.375em;
 	padding: 0.3em 0.75em;
 	font-size: 0.75em;
 	font-weight: 600;
 	letter-spacing: 0.075em;
-	color: #7f888f;
-	border-bottom: solid 2px #f56a6a;
+	color: var(--texte);
+	border-bottom: solid 2px var(--accent);
 	white-space: nowrap;
 }
-#header .icons a.langue:hover { background: rgba(245, 106, 106, 0.08); }
-#header .icons a.langue .langue-actuelle { color: #f56a6a; }
+#header .icons a.langue:hover { background: rgba(var(--accent-rgb), 0.08); }
+#header .icons a.langue .langue-actuelle { color: var(--accent); }
 
 /* Présentation sur l'accueil : texte normal, sans majuscules */
 #banner .content header p {
@@ -65,7 +126,7 @@
 	text-align: right;
 	font-size: 0.85em;
 	font-style: italic;
-	color: #9fa3a6;
+	color: var(--texte-pale);
 }
 
 /* Cartes de la page Engagements */
@@ -81,7 +142,7 @@
 	border: 0;
 	border-radius: 0.6em;
 	overflow: hidden;
-	background: #fff;
+	background: var(--fond-carte);
 	color: inherit;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -101,7 +162,7 @@
 .carte:hover img { transform: scale(1.04); }
 .carte-texte {
 	position: relative;
-	background: #fff;
+	background: var(--fond-carte);
 	padding: 1.25em 1.5em 1.5em;
 	display: flex;
 	flex-direction: column;
@@ -111,7 +172,7 @@
 	font-size: 0.75em;
 	text-transform: uppercase;
 	letter-spacing: 0.075em;
-	color: #f56a6a;
+	color: var(--accent);
 	font-weight: 600;
 	margin-bottom: 0.5em;
 }
@@ -120,14 +181,14 @@
 .carte-lien {
 	font-size: 0.8em;
 	font-weight: 600;
-	color: #f56a6a;
+	color: var(--accent);
 	text-transform: uppercase;
 	letter-spacing: 0.075em;
 }
 .carte-lien::after { content: " \2192"; transition: margin 0.2s ease; }
 .carte:hover .carte-lien::after { margin-left: 0.3em; }
-.carte:hover p { color: #7f888f !important; }
-.carte:hover h3 { color: #3d4449 !important; }
+.carte:hover p { color: var(--texte) !important; }
+.carte:hover h3 { color: var(--titre) !important; }
 
 /* Page CV */
 .bouton-cv { margin: 0 0 2.5em 0; }
@@ -137,10 +198,10 @@
 	align-items: baseline;
 	gap: 1.5em;
 	padding: 0.9em 0;
-	border-bottom: solid 1px rgba(210, 215, 217, 0.5);
+	border-bottom: solid 1px var(--bordure);
 }
 .cv-entree:has(+ hr), .cv-entree:last-child { border-bottom: 0; }
-.cv-entree strong { display: block; color: #3d4449; }
+.cv-entree strong { display: block; color: var(--titre); }
 .cv-entree span { display: block; font-size: 0.95em; }
 .cv-entree ul { margin: 0.4em 0 0 0; font-size: 0.95em; }
 .cv-entree ul li { padding-left: 0.25em; }
@@ -149,7 +210,7 @@
 	font-size: 0.8em;
 	font-weight: 600;
 	letter-spacing: 0.05em;
-	color: #f56a6a;
+	color: var(--accent);
 	white-space: nowrap;
 }
 @media screen and (max-width: 736px) {
@@ -162,14 +223,14 @@
 	align-items: flex-start;
 	padding: 1.75em 2em;
 	margin-top: 2em;
-	border-left: solid 4px #f56a6a;
+	border-left: solid 4px var(--accent);
 	border-radius: 0.6em;
-	background: #f5f6f7;
+	background: var(--fond-alt);
 }
 .reco-vedette > .icon {
 	flex-shrink: 0;
 	font-size: 2.25em;
-	color: #f56a6a;
+	color: var(--accent);
 	line-height: 1;
 }
 .reco-vedette h3 { margin: 0.2em 0 0 0; }
@@ -177,7 +238,7 @@
 .reco-etiquette {
 	font-size: 0.8em;
 	font-weight: 600;
-	color: #f56a6a;
+	color: var(--accent);
 	letter-spacing: 0.03em;
 }
 .reco-auteur { font-style: italic; margin-bottom: 0.75em; }
@@ -187,16 +248,16 @@
 	gap: 1em 3em;
 }
 .reco-categorie h2 { font-size: 1.5em; }
-.reco-categorie h2 .icon { color: #f56a6a; font-size: 0.8em; margin-right: 0.35em; }
+.reco-categorie h2 .icon { color: var(--accent); font-size: 0.8em; margin-right: 0.35em; }
 .reco-liste { list-style: none; padding: 0; }
 .reco-liste li {
 	padding: 0.9em 0 0.9em 1em;
-	border-left: solid 2px rgba(210, 215, 217, 0.75);
+	border-left: solid 2px var(--bordure);
 	margin-bottom: 0.75em;
 	transition: border-color 0.2s ease;
 }
-.reco-liste li:hover { border-left-color: #f56a6a; }
-.reco-liste strong { color: #3d4449; }
+.reco-liste li:hover { border-left-color: var(--accent); }
+.reco-liste strong { color: var(--titre); }
 .reco-liste span { font-style: italic; font-size: 0.95em; }
 .reco-liste p { margin: 0.25em 0 0 0; font-size: 0.95em; }
 @media screen and (max-width: 736px) {

@@ -13,6 +13,15 @@
 		<link rel="alternate" hreflang="fr" href="../index.html" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<link rel="stylesheet" href="../assets/css/perso.css" />
+		<script>
+			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
+			(function () {
+				var t = null;
+				try { t = localStorage.getItem('theme'); } catch (e) {}
+				if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', t);
+			})();
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -27,6 +36,7 @@
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Annabelle Dussault</strong></a>
 									<ul class="icons">
+										<li><button type="button" class="bouton-theme" data-nuit="Switch to dark mode" data-jour="Switch to light mode" title="Switch to dark mode" aria-label="Switch to dark mode"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button></li>
 										<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 										<li><a href="../index.html" class="langue" hreflang="fr" title="Lire en français"><span class="langue-actuelle">EN</span> / FR</a></li>
 									</ul>
@@ -36,7 +46,7 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Hi, welcome to my website!</h1>
+											<h1>Welcome to my website!</h1>
 											<p>My name is Annabelle Dussault and I am a master's student in political science (thesis track) at Université Laval. Come and discover my projects and my world!</p>
 										</header>
 										<p>Passionate about politics and history, I love to understand how states, institutions and citizens interact, here and elsewhere. Here you will find my background, my work and my involvement.</p>
@@ -99,6 +109,7 @@
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/theme.js"></script>
 
 	</body>
 </html>

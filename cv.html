@@ -13,6 +13,15 @@
 		<link rel="alternate" hreflang="en" href="en/cv.html" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/perso.css" />
+		<script>
+			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
+			(function () {
+				var t = null;
+				try { t = localStorage.getItem('theme'); } catch (e) {}
+				if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', t);
+			})();
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -27,6 +36,7 @@
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Annabelle Dussault</strong></a>
 									<ul class="icons">
+										<li><button type="button" class="bouton-theme" data-nuit="Passer en mode nuit" data-jour="Passer en mode jour" title="Passer en mode nuit" aria-label="Passer en mode nuit"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button></li>
 										<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 										<li><a href="en/cv.html" class="langue" hreflang="en" title="Read in English"><span class="langue-actuelle">FR</span> / EN</a></li>
 									</ul>
@@ -140,6 +150,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/theme.js"></script>
 
 	</body>
 </html>

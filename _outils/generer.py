@@ -24,6 +24,7 @@ TEXTES = {
         "contact_texte": "N'hésitez pas à m'écrire pour toute question !",
         "droits": "Tous droits réservés.",
         "autre_langue": ("en", "EN", "Read in English"),
+        "theme": ("Passer en mode nuit", "Passer en mode jour"),
     },
     "en": {
         "menu": {"accueil": "Home", "apropos": "About", "cv": "CV",
@@ -33,6 +34,7 @@ TEXTES = {
         "contact_texte": "Feel free to write to me with any questions!",
         "droits": "All rights reserved.",
         "autre_langue": ("fr", "FR", "Lire en français"),
+        "theme": ("Switch to dark mode", "Switch to light mode"),
     },
 }
 
@@ -81,6 +83,15 @@ def construire(page_id, langue):
 		<link rel="alternate" hreflang="{autre}" href="{lien(page_id, langue, autre)}" />
 		<link rel="stylesheet" href="{p}assets/css/main.css" />
 		<link rel="stylesheet" href="{p}assets/css/perso.css" />
+		<script>
+			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
+			(function () {{
+				var t = null;
+				try {{ t = localStorage.getItem('theme'); }} catch (e) {{}}
+				if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				document.documentElement.setAttribute('data-theme', t);
+			}})();
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -95,6 +106,7 @@ def construire(page_id, langue):
 								<header id="header">
 									<a href="{lien("accueil", langue, langue)}" class="logo"><strong>Annabelle Dussault</strong></a>
 									<ul class="icons">
+										<li><button type="button" class="bouton-theme" data-nuit="{t["theme"][0]}" data-jour="{t["theme"][1]}" title="{t["theme"][0]}" aria-label="{t["theme"][0]}"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button></li>
 										<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 										<li><a href="{lien(page_id, langue, autre)}" class="langue" hreflang="{autre}" title="{autre_long}"><span class="langue-actuelle">{langue.upper()}</span> / {autre_court}</a></li>
 									</ul>
@@ -145,6 +157,7 @@ def construire(page_id, langue):
 			<script src="{p}assets/js/breakpoints.min.js"></script>
 			<script src="{p}assets/js/util.js"></script>
 			<script src="{p}assets/js/main.js"></script>
+			<script src="{p}assets/js/theme.js"></script>
 
 	</body>
 </html>
