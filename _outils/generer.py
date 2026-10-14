@@ -123,9 +123,6 @@ def construire(page_id, langue):
 
 							<!-- Menu -->
 								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
 									<ul>
 {menu}
 									</ul>
