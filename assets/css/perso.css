@@ -1,0 +1,7 @@
+/* Personnalisations d'Annabelle (s'ajoutent au template Editorial) */
+
+/* Page actuelle mise en évidence dans le menu */
+#menu ul a.active {
+	color: #f56a6a;
+	font-weight: 600;
+}
