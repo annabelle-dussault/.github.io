@@ -83,6 +83,7 @@ def construire(page_id, langue):
 		<link rel="alternate" hreflang="{autre}" href="{lien(page_id, langue, autre)}" />
 		<link rel="stylesheet" href="{p}assets/css/main.css" />
 		<link rel="stylesheet" href="{p}assets/css/perso.css" />
+	   	<link rel="icon" type="image/svg+xml" href="{p}images/favicon.svg" />
 		<script>
 			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
 			(function () {{
