@@ -118,3 +118,31 @@
 .carte:hover .carte-lien::after { margin-left: 0.3em; }
 .carte:hover p { color: #7f888f !important; }
 .carte:hover h3 { color: #3d4449 !important; }
+
+/* Page CV */
+.bouton-cv { margin: 0 0 2.5em 0; }
+.cv-entree {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1.5em;
+	padding: 0.9em 0;
+	border-bottom: solid 1px rgba(210, 215, 217, 0.5);
+}
+.cv-entree:has(+ hr), .cv-entree:last-child { border-bottom: 0; }
+.cv-entree strong { display: block; color: #3d4449; }
+.cv-entree span { display: block; font-size: 0.95em; }
+.cv-entree ul { margin: 0.4em 0 0 0; font-size: 0.95em; }
+.cv-entree ul li { padding-left: 0.25em; }
+.cv-entree time {
+	flex-shrink: 0;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: #f56a6a;
+	white-space: nowrap;
+}
+@media screen and (max-width: 736px) {
+	.cv-entree { flex-direction: column; gap: 0.2em; }
+	.cv-entree time { order: -1; }
+}
