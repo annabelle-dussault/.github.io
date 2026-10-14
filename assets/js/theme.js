@@ -18,6 +18,24 @@
 		try { localStorage.setItem('theme', nouveau); } catch (e) {}
 		mettreAJourEtiquette();
 	});
+// Bouton « retour en haut »
+(function () {
+	var anglais = document.documentElement.lang === 'en';
+	var texte = anglais ? 'Back to top' : 'Retour en haut';
 
-	mettreAJourEtiquette();
+	var bouton = document.createElement('button');
+	bouton.type = 'button';
+	bouton.className = 'retour-haut';
+	bouton.title = texte;
+	bouton.setAttribute('aria-label', texte);
+	bouton.innerHTML = '<span class="icon solid fa-arrow-up"></span>';
+	document.body.appendChild(bouton);
+
+	window.addEventListener('scroll', function () {
+		bouton.classList.toggle('visible', window.scrollY > 500);
+	});
+
+	bouton.addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
 })();
