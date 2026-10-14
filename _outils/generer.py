@@ -12,12 +12,14 @@ PAGES = [
     ("apropos", "a-propos.html", "about.html"),
     ("cv", "cv.html", "cv.html"),
     ("engagements", "engagements.html", "involvement.html"),
+    ("recos", "recommandations.html", "recommendations.html"),
 ]
 
 TEXTES = {
     "fr": {
         "menu": {"accueil": "Accueil", "apropos": "À propos", "cv": "CV",
-                 "engagements": "Engagements et expériences"},
+                 "engagements": "Engagements et expériences",
+                 "recos": "Recommandations"},
         "contact_titre": "Me contacter",
         "contact_texte": "N'hésitez pas à m'écrire pour toute question !",
         "droits": "Tous droits réservés.",
@@ -25,7 +27,8 @@ TEXTES = {
     },
     "en": {
         "menu": {"accueil": "Home", "apropos": "About", "cv": "CV",
-                 "engagements": "Involvement and experience"},
+                 "engagements": "Involvement and experience",
+                 "recos": "Recommendations"},
         "contact_titre": "Contact me",
         "contact_texte": "Feel free to write to me with any questions!",
         "droits": "All rights reserved.",

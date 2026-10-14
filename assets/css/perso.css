@@ -50,9 +50,19 @@
 #header .icons a.langue:hover { background: rgba(245, 106, 106, 0.08); }
 #header .icons a.langue .langue-actuelle { color: #f56a6a; }
 
-/* Section « Ce qui m'occupe en ce moment » */
-#en-ce-moment .mise-a-jour {
-	margin-top: -1.5em;
+/* Présentation sur l'accueil : texte normal, sans majuscules */
+#banner .content header p {
+	font-family: inherit;
+	font-size: 1em;
+	letter-spacing: 0;
+	text-transform: none;
+	margin-top: 0;
+}
+
+/* Page Recommandations */
+.recos .mise-a-jour {
+	margin-top: 0.75em;
+	text-align: right;
 	font-size: 0.85em;
 	font-style: italic;
 	color: #9fa3a6;
@@ -145,4 +155,50 @@
 @media screen and (max-width: 736px) {
 	.cv-entree { flex-direction: column; gap: 0.2em; }
 	.cv-entree time { order: -1; }
+}
+.reco-vedette {
+	display: flex;
+	gap: 1.75em;
+	align-items: flex-start;
+	padding: 1.75em 2em;
+	margin-top: 2em;
+	border-left: solid 4px #f56a6a;
+	border-radius: 0.6em;
+	background: #f5f6f7;
+}
+.reco-vedette > .icon {
+	flex-shrink: 0;
+	font-size: 2.25em;
+	color: #f56a6a;
+	line-height: 1;
+}
+.reco-vedette h3 { margin: 0.2em 0 0 0; }
+.reco-vedette p:last-child { margin-bottom: 0; }
+.reco-etiquette {
+	font-size: 0.8em;
+	font-weight: 600;
+	color: #f56a6a;
+	letter-spacing: 0.03em;
+}
+.reco-auteur { font-style: italic; margin-bottom: 0.75em; }
+.reco-categories {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+	gap: 1em 3em;
+}
+.reco-categorie h2 { font-size: 1.5em; }
+.reco-categorie h2 .icon { color: #f56a6a; font-size: 0.8em; margin-right: 0.35em; }
+.reco-liste { list-style: none; padding: 0; }
+.reco-liste li {
+	padding: 0.9em 0 0.9em 1em;
+	border-left: solid 2px rgba(210, 215, 217, 0.75);
+	margin-bottom: 0.75em;
+	transition: border-color 0.2s ease;
+}
+.reco-liste li:hover { border-left-color: #f56a6a; }
+.reco-liste strong { color: #3d4449; }
+.reco-liste span { font-style: italic; font-size: 0.95em; }
+.reco-liste p { margin: 0.25em 0 0 0; font-size: 0.95em; }
+@media screen and (max-width: 736px) {
+	.reco-vedette { flex-direction: column; gap: 1em; padding: 1.5em; }
 }
