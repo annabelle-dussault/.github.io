@@ -17,7 +17,10 @@
 		document.documentElement.setAttribute('data-theme', nouveau);
 		try { localStorage.setItem('theme', nouveau); } catch (e) {}
 		mettreAJourEtiquette();
-	});
+   	});
+
+   	mettreAJourEtiquette();
+   })();
 // Bouton « retour en haut »
 (function () {
 	var anglais = document.documentElement.lang === 'en';
