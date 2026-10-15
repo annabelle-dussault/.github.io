@@ -93,7 +93,7 @@ def construire(page_id, langue):
 		}})();
 	</script>
 </head>
-<body>
+<body class="page-{page_id}">
 	<a class="lien-evitement" href="#contenu">{t["evitement"]}</a>
 
 	<!-- En-tête et menu -->
@@ -106,6 +106,7 @@ def construire(page_id, langue):
 				</ul>
 			</nav>
 			<div class="outils">
+				<button type="button" class="bouton-saison" aria-pressed="true"><span class="icon solid"></span></button>
 				<button type="button" class="bouton-theme" data-nuit="{t["theme"][0]}" data-jour="{t["theme"][1]}" title="{t["theme"][0]}" aria-label="{t["theme"][0]}"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button>
 				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
 				<a href="{lien(page_id, langue, autre)}" class="langue" hreflang="{autre}" title="{autre_long}"><span class="langue-actuelle">{langue.upper()}</span> / {autre_court}</a>
@@ -137,6 +138,7 @@ def construire(page_id, langue):
 
 	<script src="{p}assets/js/theme.js"></script>
 	<script src="{p}assets/js/menu.js"></script>
+	<script src="{p}assets/js/saisons.js"></script>
 </body>
 </html>
 """
