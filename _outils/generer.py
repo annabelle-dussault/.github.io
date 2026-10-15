@@ -108,7 +108,7 @@ def construire(page_id, langue):
 			<div class="outils">
 				<button type="button" class="bouton-saison" aria-pressed="true"><span class="icon solid"></span></button>
 				<button type="button" class="bouton-theme" data-nuit="{t["theme"][0]}" data-jour="{t["theme"][1]}" title="{t["theme"][0]}" aria-label="{t["theme"][0]}"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button>
-				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
+				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" target="_blank" rel="noopener" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
 				<a href="{lien(page_id, langue, autre)}" class="langue" hreflang="{autre}" title="{autre_long}"><span class="langue-actuelle">{langue.upper()}</span> / {autre_court}</a>
 				<button type="button" class="bouton-menu" aria-controls="menu" aria-expanded="false"><span class="icon solid fa-bars"></span> {t["menu_bouton"]}</button>
 			</div>
@@ -130,7 +130,7 @@ def construire(page_id, langue):
 			</div>
 			<ul>
 				<li><a href="mailto:anna5.dussault@gmail.com">anna5.dussault@gmail.com</a></li>
-				<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/">LinkedIn</a></li>
+				<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" target="_blank" rel="noopener">LinkedIn</a></li>
 			</ul>
 			<p class="droits">&copy; 2026 Annabelle Dussault. {t["droits"]}</p>
 		</div>
