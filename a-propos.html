@@ -1,115 +1,94 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	Page générée par _outils/generer.py : modifier le contenu dans _outils/contenu/
--->
+<!DOCTYPE html>
+<!-- Page générée par _outils/generer.py : modifier le contenu dans _outils/contenu/ -->
 <html lang="fr">
-	<head>
-		<title>À propos | Annabelle Dussault</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="alternate" hreflang="en" href="en/about.html" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/perso.css" />
-	   	<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-		<script>
-			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
-			(function () {
-				var t = null;
-				try { t = localStorage.getItem('theme'); } catch (e) {}
-				if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', t);
-			})();
-		</script>
-	</head>
-	<body class="is-preload">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>À propos | Annabelle Dussault</title>
+	<meta name="description" content="Annabelle Dussault, étudiante à la maîtrise en science politique à l'Université Laval." />
+	<link rel="alternate" hreflang="en" href="en/about.html" />
+	<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+	<link rel="preload" href="assets/fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+	<link rel="stylesheet" href="assets/css/perso.css" />
+	<script>
+		// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
+		(function () {
+			var t = null;
+			try { t = localStorage.getItem('theme'); } catch (e) {}
+			if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			document.documentElement.setAttribute('data-theme', t);
+		})();
+	</script>
+</head>
+<body>
+	<a class="lien-evitement" href="#contenu">Aller au contenu</a>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+	<!-- En-tête et menu -->
+	<header class="entete">
+		<div class="page">
+			<a class="nom" href="index.html">Annabelle Dussault</a>
+			<nav class="menu" id="menu" aria-label="Menu">
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="a-propos.html" class="active" aria-current="page">À propos</a></li>
+					<li><a href="cv.html">CV</a></li>
+					<li><a href="engagements.html">Engagements</a></li>
+					<li><a href="recommandations.html">Recommandations</a></li>
+				</ul>
+			</nav>
+			<div class="outils">
+				<button type="button" class="bouton-theme" data-nuit="Passer en mode nuit" data-jour="Passer en mode jour" title="Passer en mode nuit" aria-label="Passer en mode nuit"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button>
+				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
+				<a href="en/about.html" class="langue" hreflang="en" title="Read in English"><span class="langue-actuelle">FR</span> / EN</a>
+				<button type="button" class="bouton-menu" aria-controls="menu" aria-expanded="false"><span class="icon solid fa-bars"></span> Menu</button>
+			</div>
+		</div>
+	</header>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+	<main id="contenu">
+		<div class="page">
+			<header class="entete-page">
+				<h1>À propos</h1>
+			</header>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Annabelle Dussault</strong></a>
-									<ul class="icons">
-										<li><button type="button" class="bouton-theme" data-nuit="Passer en mode nuit" data-jour="Passer en mode jour" title="Passer en mode nuit" aria-label="Passer en mode nuit"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button></li>
-										<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-										<li><a href="en/about.html" class="langue" hreflang="en" title="Read in English"><span class="langue-actuelle">FR</span> / EN</a></li>
-									</ul>
-								</header>
-
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>À propos</h1>
-									</header>
-
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-
-									<p>[À compléter : quelques phrases pour te présenter, ton parcours et ce qui t'a menée à la science politique.]</p>
-
-									<hr class="major" />
-
-									<h2>Mes intérêts de recherche</h2>
-									<p>[À compléter : les thèmes qui te passionnent et ton projet de mémoire.]</p>
-
-									<hr class="major" />
-
-									<h2>En dehors des études</h2>
-									<p>[À compléter : tes passions, tes voyages, ce qui te ressemble.]</p>
-								</section>
-
-						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<ul>
-										<li><a href="index.html">Accueil</a></li>
-										<li><a href="a-propos.html" class="active">À propos</a></li>
-										<li><a href="cv.html">CV</a></li>
-										<li><a href="engagements.html">Engagements et expériences</a></li>
-										<li><a href="recommandations.html">Recommandations</a></li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Me contacter</h2>
-									</header>
-									<p>N'hésitez pas à m'écrire pour toute question !</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="mailto:anna5.dussault@gmail.com">anna5.dussault@gmail.com</a></li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Annabelle Dussault. Tous droits réservés. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
+			<div class="a-propos">
+				<div>
+					<p class="chapeau">Je suis étudiante à la maîtrise en science politique avec mémoire à l'Université Laval, après un baccalauréat en droit dans la même université.</p>
+					<p>Passionnée de politique et d'histoire, j'aime comprendre comment les États, les institutions et les citoyens interagissent, ici comme ailleurs.</p>
+					<p>Mon parcours se partage entre la recherche et la vie parlementaire. Je suis auxiliaire de recherche à la Chaire de leadership en enseignement des sciences sociales numériques (CLESSN) et à la Chaire du Canada en économie politique internationale. J'ai aussi été page à l'Assemblée nationale du Québec et recherchiste-étudiante à la Cour d'appel du Québec.</p>
+					<p>Depuis 2023, je m'implique au Parlement jeunesse du Québec, où j'ai notamment été ministre des Institutions démocratiques et déléguée internationale auprès du Conseil des jeunes valdôtains, en Italie.</p>
+				</div>
+				<aside>
+					<h2>Intérêts</h2>
+					<ul>
+						<li>Institutions démocratiques et vie parlementaire</li>
+						<li>Relations internationales et gouvernance mondiale</li>
+						<li>Économie politique internationale</li>
+						<li>Droit et politiques publiques</li>
+					</ul>
+				</aside>
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/theme.js"></script>
+		</div>
+	</main>
 
-	</body>
+	<!-- Pied de page -->
+	<footer class="pied">
+		<div class="page">
+			<div>
+				<p class="nom">Annabelle Dussault</p>
+				<p>Étudiante à la maîtrise en science politique, Université Laval</p>
+			</div>
+			<ul>
+				<li><a href="mailto:anna5.dussault@gmail.com">anna5.dussault@gmail.com</a></li>
+				<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/">LinkedIn</a></li>
+			</ul>
+			<p class="droits">&copy; 2026 Annabelle Dussault. Tous droits réservés.</p>
+		</div>
+	</footer>
+
+	<script src="assets/js/theme.js"></script>
+	<script src="assets/js/menu.js"></script>
+</body>
 </html>

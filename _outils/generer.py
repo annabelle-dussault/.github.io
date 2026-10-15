@@ -18,23 +18,25 @@ PAGES = [
 TEXTES = {
     "fr": {
         "menu": {"accueil": "Accueil", "apropos": "À propos", "cv": "CV",
-                 "engagements": "Engagements et expériences",
-                 "recos": "Recommandations"},
-        "contact_titre": "Me contacter",
-        "contact_texte": "N'hésitez pas à m'écrire pour toute question !",
+                 "engagements": "Engagements", "recos": "Recommandations"},
+        "description": "Annabelle Dussault, étudiante à la maîtrise en science politique à l'Université Laval.",
+        "pied": "Étudiante à la maîtrise en science politique, Université Laval",
         "droits": "Tous droits réservés.",
         "autre_langue": ("en", "EN", "Read in English"),
         "theme": ("Passer en mode nuit", "Passer en mode jour"),
+        "menu_bouton": "Menu",
+        "evitement": "Aller au contenu",
     },
     "en": {
         "menu": {"accueil": "Home", "apropos": "About", "cv": "CV",
-                 "engagements": "Involvement and experience",
-                 "recos": "Recommendations"},
-        "contact_titre": "Contact me",
-        "contact_texte": "Feel free to write to me with any questions!",
+                 "engagements": "Involvement", "recos": "Recommendations"},
+        "description": "Annabelle Dussault, master's student in political science at Université Laval.",
+        "pied": "Master's student in political science, Université Laval",
         "droits": "All rights reserved.",
         "autre_langue": ("fr", "FR", "Lire en français"),
         "theme": ("Switch to dark mode", "Switch to light mode"),
+        "menu_bouton": "Menu",
+        "evitement": "Skip to content",
     },
 }
 
@@ -62,102 +64,80 @@ def construire(page_id, langue):
     titre = "Annabelle Dussault" if page_id == "accueil" else f"{titre_page} | Annabelle Dussault"
     autre, autre_court, autre_long = t["autre_langue"]
 
-    actif = ' class="active"'
+    actif = ' class="active" aria-current="page"'
     menu = "\n".join(
-        "\t" * 10 + f'<li><a href="{lien(pid, langue, langue)}"'
+        "\t\t\t\t\t" + f'<li><a href="{lien(pid, langue, langue)}"'
         f'{actif if pid == page_id else ""}>{t["menu"][pid]}</a></li>'
         for pid, _, _ in PAGES)
 
-    return f"""<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	Page générée par _outils/generer.py : modifier le contenu dans _outils/contenu/
--->
+    return f"""<!DOCTYPE html>
+<!-- Page générée par _outils/generer.py : modifier le contenu dans _outils/contenu/ -->
 <html lang="{langue}">
-	<head>
-		<title>{titre}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="alternate" hreflang="{autre}" href="{lien(page_id, langue, autre)}" />
-		<link rel="stylesheet" href="{p}assets/css/main.css" />
-		<link rel="stylesheet" href="{p}assets/css/perso.css" />
-	   	<link rel="icon" type="image/svg+xml" href="{p}images/favicon.svg" />
-		<script>
-			// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
-			(function () {{
-				var t = null;
-				try {{ t = localStorage.getItem('theme'); }} catch (e) {{}}
-				if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				document.documentElement.setAttribute('data-theme', t);
-			}})();
-		</script>
-	</head>
-	<body class="is-preload">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{titre}</title>
+	<meta name="description" content="{t["description"]}" />
+	<link rel="alternate" hreflang="{autre}" href="{lien(page_id, langue, autre)}" />
+	<link rel="icon" type="image/svg+xml" href="{p}images/favicon.svg" />
+	<link rel="preload" href="{p}assets/fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="stylesheet" href="{p}assets/css/fontawesome-all.min.css" />
+	<link rel="stylesheet" href="{p}assets/css/perso.css" />
+	<script>
+		// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
+		(function () {{
+			var t = null;
+			try {{ t = localStorage.getItem('theme'); }} catch (e) {{}}
+			if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			document.documentElement.setAttribute('data-theme', t);
+		}})();
+	</script>
+</head>
+<body>
+	<a class="lien-evitement" href="#contenu">{t["evitement"]}</a>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-
-							<!-- Header -->
-								<header id="header">
-									<a href="{lien("accueil", langue, langue)}" class="logo"><strong>Annabelle Dussault</strong></a>
-									<ul class="icons">
-										<li><button type="button" class="bouton-theme" data-nuit="{t["theme"][0]}" data-jour="{t["theme"][1]}" title="{t["theme"][0]}" aria-label="{t["theme"][0]}"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button></li>
-										<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-										<li><a href="{lien(page_id, langue, autre)}" class="langue" hreflang="{autre}" title="{autre_long}"><span class="langue-actuelle">{langue.upper()}</span> / {autre_court}</a></li>
-									</ul>
-								</header>
-
-{corps}
-						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<ul>
+	<!-- En-tête et menu -->
+	<header class="entete">
+		<div class="page">
+			<a class="nom" href="{lien("accueil", langue, langue)}">Annabelle Dussault</a>
+			<nav class="menu" id="menu" aria-label="Menu">
+				<ul>
 {menu}
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>{t["contact_titre"]}</h2>
-									</header>
-									<p>{t["contact_texte"]}</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="mailto:anna5.dussault@gmail.com">anna5.dussault@gmail.com</a></li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Annabelle Dussault. {t["droits"]} Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
+				</ul>
+			</nav>
+			<div class="outils">
+				<button type="button" class="bouton-theme" data-nuit="{t["theme"][0]}" data-jour="{t["theme"][1]}" title="{t["theme"][0]}" aria-label="{t["theme"][0]}"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button>
+				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
+				<a href="{lien(page_id, langue, autre)}" class="langue" hreflang="{autre}" title="{autre_long}"><span class="langue-actuelle">{langue.upper()}</span> / {autre_court}</a>
+				<button type="button" class="bouton-menu" aria-controls="menu" aria-expanded="false"><span class="icon solid fa-bars"></span> {t["menu_bouton"]}</button>
 			</div>
+		</div>
+	</header>
 
-		<!-- Scripts -->
-			<script src="{p}assets/js/jquery.min.js"></script>
-			<script src="{p}assets/js/browser.min.js"></script>
-			<script src="{p}assets/js/breakpoints.min.js"></script>
-			<script src="{p}assets/js/util.js"></script>
-			<script src="{p}assets/js/main.js"></script>
-			<script src="{p}assets/js/theme.js"></script>
+	<main id="contenu">
+		<div class="page">
+{corps}
+		</div>
+	</main>
 
-	</body>
+	<!-- Pied de page -->
+	<footer class="pied">
+		<div class="page">
+			<div>
+				<p class="nom">Annabelle Dussault</p>
+				<p>{t["pied"]}</p>
+			</div>
+			<ul>
+				<li><a href="mailto:anna5.dussault@gmail.com">anna5.dussault@gmail.com</a></li>
+				<li><a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/">LinkedIn</a></li>
+			</ul>
+			<p class="droits">&copy; 2026 Annabelle Dussault. {t["droits"]}</p>
+		</div>
+	</footer>
+
+	<script src="{p}assets/js/theme.js"></script>
+	<script src="{p}assets/js/menu.js"></script>
+</body>
 </html>
 """
 
