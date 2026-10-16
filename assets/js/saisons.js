@@ -32,7 +32,6 @@
 
 	// ===== Bouton pour activer ou couper les animations =====
 	var anglais = document.documentElement.lang === 'en';
-	var icones = { hiver: 'fa-snowflake', printemps: 'fa-seedling', ete: 'fa-cloud-sun', automne: 'fa-leaf' };
 	var actif = true;
 	try { actif = localStorage.getItem('animations') !== 'off'; } catch (e) {}
 
@@ -47,7 +46,16 @@
 		bouton.classList.toggle('eteint', !actif);
 	}
 	if (bouton) {
-		bouton.querySelector('.icon').classList.add(icones[saison]);
+		// Cadran : colore le quart de la saison et pointe l'aiguille sur la date du jour
+		bouton.classList.add('saison-' + saison);
+		var aiguille = bouton.querySelector('.aiguille');
+		if (aiguille) {
+			var auj = new Date();
+			var depart = new Date(auj.getFullYear(), 11, 21);          // 21 décembre
+			if (auj < depart) depart = new Date(auj.getFullYear() - 1, 11, 21);
+			var jours = (auj - depart) / 86400000;
+			aiguille.setAttribute('transform', 'rotate(' + (jours / 365 * 360).toFixed(1) + ' 12 12)');
+		}
 		bouton.addEventListener('click', function () {
 			actif = !actif;
 			try { localStorage.setItem('animations', actif ? 'on' : 'off'); } catch (e) {}

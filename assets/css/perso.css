@@ -125,13 +125,28 @@ ul { padding-left: 1.2em; }
 	cursor: pointer;
 	line-height: 1;
 }
-.bouton-theme { font-size: 1.05rem; }
-.bouton-saison { font-size: 1rem; }
+.bouton-theme svg, .bouton-saison svg { display: block; }
 .bouton-saison.eteint { opacity: 0.4; }
 .bouton-saison[hidden] { display: none; }
-.bouton-theme .fa-sun { display: none; }
-[data-theme="dark"] .bouton-theme .fa-sun { display: inline-block; }
-[data-theme="dark"] .bouton-theme .fa-moon { display: none; }
+
+/* Icônes jour / nuit : croissant de lune le jour, soleil à rayons la nuit */
+.icone-lune .disque { fill: var(--accent); }
+.icone-soleil circle { fill: var(--accent); }
+.icone-soleil line { stroke: var(--accent); }
+.icone-soleil { display: none !important; }
+[data-theme="dark"] .icone-soleil { display: block !important; }
+[data-theme="dark"] .icone-lune { display: none !important; }
+.bouton-theme:hover svg { transform: rotate(-15deg); }
+.bouton-theme svg { transition: transform 0.3s ease; }
+
+/* Cadran des saisons : le quart de la saison actuelle est coloré */
+.cadran .quart { display: none; }
+.cadran .aiguille { stroke: var(--encre); }
+.cadran .pivot { fill: var(--encre); }
+.saison-hiver .quart-hiver { display: block; fill: #8fb3d9; }
+.saison-printemps .quart-printemps { display: block; fill: #e993ad; }
+.saison-ete .quart-ete { display: block; fill: #e2a832; }
+.saison-automne .quart-automne { display: block; fill: #c8532b; }
 .outils .icon.brands { font-size: 1.1rem; }
 a.langue {
 	font-size: 0.8rem;

@@ -14,9 +14,15 @@
 	<script>
 		// Applique le mode jour ou nuit avant l'affichage (évite un flash blanc)
 		(function () {
+			// Le soir et la nuit (de 19 h à 7 h), le site s'ouvre en mode nuit.
+			var DEBUT_NUIT = 19, FIN_NUIT = 7;
 			var t = null;
-			try { t = localStorage.getItem('theme'); } catch (e) {}
-			if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			// Un choix fait avec le bouton reste valable jusqu'à la fermeture de l'onglet
+			try { t = sessionStorage.getItem('theme'); } catch (e) {}
+			if (!t) {
+				var h = new Date().getHours();
+				t = (h >= DEBUT_NUIT || h < FIN_NUIT) ? 'dark' : 'light';
+			}
 			document.documentElement.setAttribute('data-theme', t);
 		})();
 	</script>
@@ -38,8 +44,8 @@
 				</ul>
 			</nav>
 			<div class="outils">
-				<button type="button" class="bouton-saison" aria-pressed="true"><span class="icon solid"></span></button>
-				<button type="button" class="bouton-theme" data-nuit="Passer en mode nuit" data-jour="Passer en mode jour" title="Passer en mode nuit" aria-label="Passer en mode nuit"><span class="icon solid fa-moon"></span><span class="icon solid fa-sun"></span></button>
+				<button type="button" class="bouton-saison" aria-pressed="true"><svg class="cadran" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path class="quart quart-hiver" d="M12 12L12.00 4.00A8 8 0 0 1 20.00 12.00Z"/><path class="quart quart-printemps" d="M12 12L20.00 12.00A8 8 0 0 1 12.00 20.00Z"/><path class="quart quart-ete" d="M12 12L12.00 20.00A8 8 0 0 1 4.00 12.00Z"/><path class="quart quart-automne" d="M12 12L4.00 12.00A8 8 0 0 1 12.00 4.00Z"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="0.8" opacity=".45"/><line class="aiguille" x1="12" y1="12" x2="12" y2="5.8" stroke-width="1.6" stroke-linecap="round"/><circle class="pivot" cx="12" cy="12" r="1.6"/></svg></button>
+				<button type="button" class="bouton-theme" data-nuit="Passer en mode nuit" data-jour="Passer en mode jour" title="Passer en mode nuit" aria-label="Passer en mode nuit"><svg class="icone-lune" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><mask id="masque-lune"><rect width="24" height="24" fill="#fff"/><circle cx="16" cy="9" r="7" fill="#000"/></mask><circle class="disque" cx="12" cy="12" r="8" mask="url(#masque-lune)"/></svg><svg class="icone-soleil" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-width="1.6" stroke-linecap="round"><line x1="18.50" y1="12.00" x2="21.20" y2="12.00"/><line x1="16.60" y1="16.60" x2="18.51" y2="18.51"/><line x1="12.00" y1="18.50" x2="12.00" y2="21.20"/><line x1="7.40" y1="16.60" x2="5.49" y2="18.51"/><line x1="5.50" y1="12.00" x2="2.80" y2="12.00"/><line x1="7.40" y1="7.40" x2="5.49" y2="5.49"/><line x1="12.00" y1="5.50" x2="12.00" y2="2.80"/><line x1="16.60" y1="7.40" x2="18.51" y2="5.49"/></g></svg></button>
 				<a href="https://www.linkedin.com/in/annabelle-dussault-625a05303/" target="_blank" rel="noopener" class="icon brands fa-linkedin-in" title="LinkedIn"><span class="label">LinkedIn</span></a>
 				<a href="en/about.html" class="langue" hreflang="en" title="Read in English"><span class="langue-actuelle">FR</span> / EN</a>
 				<button type="button" class="bouton-menu" aria-controls="menu" aria-expanded="false"><span class="icon solid fa-bars"></span> Menu</button>

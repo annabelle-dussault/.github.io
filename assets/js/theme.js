@@ -15,7 +15,7 @@
 		var nuit = document.documentElement.getAttribute('data-theme') === 'dark';
 		var nouveau = nuit ? 'light' : 'dark';
 		document.documentElement.setAttribute('data-theme', nouveau);
-		try { localStorage.setItem('theme', nouveau); } catch (e) {}
+		try { sessionStorage.setItem('theme', nouveau); } catch (e) {}
 		mettreAJourEtiquette();
    	});
 
